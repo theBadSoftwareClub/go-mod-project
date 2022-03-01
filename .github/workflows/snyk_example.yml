@@ -15,6 +15,8 @@ jobs:
           sudo npm install -g snyk
           snyk auth ${SNYK_TOKEN}
           # python may need virtual environment
+          python3 -m venv venv
+          source venv/bin/activate
           pip install -r requirements.txt
         continue-on-error: true
 
