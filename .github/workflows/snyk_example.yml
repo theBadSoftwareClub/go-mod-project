@@ -20,5 +20,5 @@ jobs:
 
       # Snyk Test directly
       - run: |
-          snyk test --severity-threshold=high
+          snyk test --all-projects --severity-threshold=high
         continue-on-error: true
