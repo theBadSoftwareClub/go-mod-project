@@ -22,5 +22,5 @@ jobs:
 
       # Snyk Test directly
       - run: |
-          snyk test --all-projects --severity-threshold=high
+          snyk test --all-projects --severity-threshold=high --command=venv/bin/python
         continue-on-error: true
