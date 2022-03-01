@@ -1,0 +1,24 @@
+name: Test Code With Snyk
+on: push
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+    steps:
+      # Checkout
+      - uses: actions/checkout@master
+
+      # Install directly
+      - run: |
+          sudo npm install -g snyk
+          snyk auth ${SNYK_TOKEN}
+          # python may need virtual environment
+          pip install -r requirements.txt
+        continue-on-error: true
+
+      # Snyk Test directly
+      - run: |
+          snyk test --severity-threshold=high
+        continue-on-error: true
